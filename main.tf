@@ -31,3 +31,14 @@ module "vpc" {
     Environment = "dev"
   }
 }
+
+
+resource "aws_instance" "MyServerEC2" {
+  count         = 2
+  ami           = "ami-0870af38096a5355b"
+  instance_type = "t3.micro"
+
+  tags = {
+    Name = "MyServerEC2-${count.index + 1}"
+  }
+}
