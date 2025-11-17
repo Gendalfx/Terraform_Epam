@@ -10,7 +10,7 @@ VPC (Virtual Private Cloud)
 ____
 
 # How to launch a project
-To run the project, you need to add your ACCESS_KEY and SECRET_KEY
+To run the project, you need to add your ACCESS_KEY and SECRET_KEY.
 
 For Windows:
 ```
@@ -24,3 +24,23 @@ Terraform init
 Terraform plan
 Terraform apply
 ```
+____
+
+# How to test a project
+
+Follow to EC2 > Load balancers > my-application-lb > and copy DNS name.
+
+Next, go to your browser and paste the link. When you reload the page, you will see a new page with a different color and text each time. This means that our LB is working successfully and redirecting our traffic.
+
+
+![First:](./images/1.png)
+
+![Second:](./images/2.png)
+
+
+
+Next, we run 
+```
+terraform destroy 
+```
+so that aws doesn't eat up money.
