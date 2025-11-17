@@ -10,6 +10,10 @@ provider "aws" {
   region = "eu-west-1"
 }
 
+locals {
+  colors = ["yellow", "blue"]
+}
+
 #------------------------------------------------------------------Create VPC
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
@@ -76,7 +80,10 @@ resource "aws_instance" "MyServerEC2" {
   subnet_id              = module.vpc.private_subnets[count.index]
   vpc_security_group_ids = [aws_security_group.ec2_sg.id]
 
-  user_data = file("install_apache.sh")
+  user_data = templatefile("install_apache.sh", {
+    color = local.colors[count.index]
+    index = count.index + 1
+  })
 
   tags = {
     Name = "MyServerEC2-${count.index + 1}"
