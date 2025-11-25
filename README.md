@@ -14,9 +14,14 @@ To run the project, you need to add your ACCESS_KEY and SECRET_KEY.
 
 For Windows:
 ```
-$env:AWS_ACCESS_KEY_ID=" "
-$env:AWS_SECRET_ACCESS_KEY=" "
+$env:AWS_ACCESS_KEY_ID="your-access-key-id"
+$env:AWS_SECRET_ACCESS_KEY="your-secret-access-key"
 ```
+For Linux:
+'''
+export AWS_ACCESS_KEY_ID="your-access-key-id"
+export AWS_SECRET_ACCESS_KEY="your-secret-access-key"
+'''
 Next you need to launch the terraform itself:
 
 ```
@@ -39,8 +44,17 @@ Next, go to your browser and paste the link. When you reload the page, you will 
 
 
 
-Next, we run 
+Next, we run:
 ```
 terraform destroy 
 ```
-so that aws doesn't eat up money.
+
+### 🛠 Implemented Improvements
+**Updated:** November 25, 2025
+
+* **Security:** Configured **AWS SSM Session Manager** for secure instance access without opening inbound ports.
+* **Hardcoded AMI:** Replaced static IDs with **`data "aws_ami"`** to automatically select the latest image.
+* **State Locking:** Set up **Remote Backend (S3 + DynamoDB)** for secure state storage and locking.
+* **Structure:** Split monolithic code into separate logical files.
+* **Hardcoding Environment:** Moved region and network parameters to **variables** to facilitate easy switching between environments.
+* **Depends_on:** Removed redundant **`depends_on`** as Terraform automatically builds the dependency graph.
