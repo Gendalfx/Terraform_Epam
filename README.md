@@ -5,6 +5,10 @@ The project architecture includes the following components:
   * **VPC** (Virtual Private Cloud)
   * **2 x EC2 Instances**
   * **1 x Load Balancer**
+  * **S3 Bucket**
+  * **DynamoDB** (terraform-lock)
+  * **SSM** (Amazon Web Services Systems Manager)
+
 
 ![](https://elearn.epam.com/assets/courseware/v1/f4fa5ac5a0dea7cde73b4afebff5ec7a/asset-v1:RD_CEE+DevOpsCloud+IaC_0123+type@asset+block/DevOps_S7_Scheme_1_v2.svg)
 -----
